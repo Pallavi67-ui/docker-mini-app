@@ -10,11 +10,12 @@ app.use(cors());
 app.use(express.json());
 
 // ✅ MongoDB connection inside Docker network
-mongoose.connect("mongodb://mongo:27017/mydatabase", {
+mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true
-})
-  .then(() => console.log("✅ Connected to MongoDB successfully"))
+});
+
+  then(() => console.log("✅ Connected to MongoDB successfully"))
   .catch(err => console.error("❌ MongoDB connection error:", err));
 
 // ✅ Test route
