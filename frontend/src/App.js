@@ -4,11 +4,10 @@ function App() {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    fetch("https://docker-mini-backend.onrender.com/api/hello")
-
-    
-      .then(res => res.json())
-      .then(data => setMessage(data.message));
+    fetch("https://docker-mini-app-5.onrender.com/")
+      .then(res => res.text()) // backend sends plain text
+      .then(data => setMessage(data))
+      .catch(err => setMessage("❌ Backend not reachable"));
   }, []);
 
   return (
